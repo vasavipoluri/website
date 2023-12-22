@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Already Registered</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #0066cc;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Already Registered</h1>
+    <p>Hello {{ user }},</p>
+    <p>You are already registered for the course. If you have any questions, please contact us.</p>
+    <p><a href="/studentdetails">View Student Details</a></p>
+    <p><a href="/home">Go to Home</a></p>
+</body>
+</html>

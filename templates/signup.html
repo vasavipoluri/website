@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+    <title>Signup</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="h" align="center">Signup Form</h2>
+        <form action="/signup" method="post" id="signupForm">
+
+            {% if error_messages %}
+  <ul>
+    {% for error in error_messages %}
+      <li class="error-message">{{ error }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+            <!-- Display the error message in red -->
+            {% if message %}
+                <p class="error-message">{{ message }}</p>
+            {% endif %}
+            <label class="h" for="signupUsername">Username:</label>
+            <input type="text" id="signupUsername" name="username" required>
+            <label class="h" for="signupPassword">Password:</label>
+            <input type="password" id="signupPassword" name="password" required>
+            <label for="password_repeat">Repeat Password</label>
+            <input type="password" id="password_repeat" name="password_repeat" required>
+            <div class="button-container">
+                <button type="button" class="button" onclick="window.location.href='/login'">Login</button>
+            <button type="submit" class="button">Signup</button>
+            </div>
+        </form>
+    
+    </div>
+</body>
+</html>

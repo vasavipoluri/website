@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .error-message {
+    color: red;
+}
+.course-selection-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        
+        #courseInput {
+            width: 400px;
+            height: 36px; 
+            padding: 5px;
+        }
+        .dropdown-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 8px 12px;
+            cursor: pointer;
+            background-color: #f8f8f8;
+            border-left: none;
+        }
+        .btn-container{
+            align-items: center;
+            justify-content: center;
+        } 
+        .main-heading{
+            color:white;
+            font-size: 30px;
+            text-align: center;
+            font-weight: bold;
+        
+        }
+        </style>
+        <link rel="stylesheet" href="{{ url_for('static', path='/dashboardstyles.css') }}">
+</head>
+
+<body>
+    <div class="home-container">
+    <div class="container">
+        <h2 class="main-heading">Edit Your Application</h2> 
+        <form method="post" action="{{ url_for('edit_student', common_id=student._id) }}">
+        <!-- Fields for updating student details -->
+        <label for="firstname">First Name:</label>
+        <input type="text" name="firstname" value="{{ student.firstname }}" required>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastname" value="{{ student.lastname }}" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dateofbirth" value="{{ student.dateofbirth }}" required>
+
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ student.email }}" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[1-9]{1}[0-9]{9}" value="{{ student.phone }}" required />
+
+        <label for="collegeName">College Name:</label>
+        <input type="text" id="collegeName" name="collegename" value="{{ student.collegename }}" required>
+
+        <label for="degree">Degree:</label>
+        <input type="text" id="degree" name="degree" value="{{ student.degree }}" required>
+
+        <label for="degree">Course:</label>
+        <div class="course-selection-container">
+            <input type="text" id="courseInput" name="course" readonly placeholder="Select a Course" value="{{ student.course }}" required>
+
+            <div class="dropdown-btn" onclick="toggleDropdown()">▼</div>
+            <div id="courseOptions" style="display: none; position: absolute; top: 100%; right: 0; background-color: #f8f8f8; border: 1px solid #ccc; border-top: none; border-radius: 0 0 5px 5px; z-index: 1;">
+                <option value="Python" onclick="selectCourse('Python')">Python</option>
+                <option value="Web Development" onclick="selectCourse('Web Development')">Web Development</option>
+                <option value="Android Development" onclick="selectCourse('Android Development')">Android Development</option>
+                <option value="Data Science" onclick="selectCourse('Data Science')">Data Science</option>
+                <option value="Cyber Security" onclick="selectCourse('Cyber Security')">Cyber Security</option>
+                <option value="Digital Marketing" onclick="selectCourse('Digital Marketing')">Digital Marketing</option>
+                <option value="Digital Marketing" onclick="selectCourse('Machine Learning')">Machine Learning</option>
+                <option value="Digital Marketing" onclick="selectCourse('Artificial Intelligence')">Artificial Intelligence</option>
+
+            </div>
+        </div>
+
+        <div align="center">
+            <button type="submit" class="reset-button">Register</button>
+            {% if message %}
+            <p class="error-message">{{ message }}</p>
+            {% endif %}
+        </div>
+    </form>
+
+    <script>
+        function toggleDropdown() {
+            var dropdownOptions = document.getElementById("courseOptions");
+            dropdownOptions.style.display = dropdownOptions.style.display === "none" ? "block" : "none"; // Display dropdown menu
+        }
+
+        function selectCourse(course) {
+            document.getElementById("courseInput").value = course;
+            toggleDropdown(); // Hide the dropdown after selection
+        }
+    </script>
+    </div>
+    </div>
+</body>
+
+</html>

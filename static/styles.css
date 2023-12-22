@@ -1,0 +1,76 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiNtv5ws14JQlstOsA6nJle43hVMPiR8oGhg&usqp=CAU");
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-size: cover;
+
+} 
+.container {
+    height: 450px;
+    width: 450px;
+    background: linear-gradient(darkblue,black);  
+    color: white; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(11, 8, 8, 0.1);
+    justify-content: center;
+} 
+
+
+.link{
+    color: white;
+    margin: 5px;
+    padding: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button-container{
+    display:flex;
+    flex-direction: flex-row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 5px;
+
+}
+.color{
+    color: white;
+}
+ .button{
+    height:40px;
+    width: 110px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid pink;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 10px
+} 
+.h{
+    color: white;
+    
+}
+
+.error-message {
+    color: red;
+} 

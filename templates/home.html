@@ -1,0 +1,271 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+.navbar {
+    overflow: hidden;
+    background-color: black;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+} 
+
+.course-button{
+    height:40px;
+    width:180px;
+    border-radius: 15px;
+    border: 1px solid pink;
+    background-color: transparent;
+    color: white; 
+    font-size: 15px;
+}
+
+.my-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* This ensures that the container takes the full height of the viewport */
+}
+
+/* Define a class for the heading */
+.color-changing-heading {
+      font-size: 40px;
+      animation: changeColor 5s infinite; /* Use the changeColor animation for 5 seconds and repeat infinitely */
+    }
+
+    /* Define the keyframes for the animation */
+    @keyframes changeColor {
+      0% { color: red; }
+      25% { color: blue; }
+      50% { color: green; }
+      75% { color: orange; }
+      100% { color: rgb(0, 109, 128); }
+    }
+
+</style>
+    <link rel="stylesheet" href="{{ url_for('static', path='/dashboardstyles.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/home">Home</a>
+        <a href="/registration">Student Registration</a>
+        <a href="/studentdetails">Student Details</a>
+        <a href="/contactus">Contact Us</a> 
+        <a style="float: right;" href="/logout">Logout</a> 
+        <a style="float: right;" href="/loginsignup">Login/Signup</a> 
+        
+    </div>
+    <div class="home-container">
+        <div id="homePage">
+            <div class="my-container">
+                <!-- <h1 ><marquee>Hi! Welcome to the Dashboard</marquee></h1> -->
+                <!-- <h1 class="color-changing-heading"><marquee>Restricted by opportunities?</marquee></h1>
+                <p class="text-para">
+                Get the tech career <br/>
+                You deserve. Faster.
+            </p>
+            <p class="para">
+                Stuructured courses that get you there faster with confidence
+            </p> 
+            <button class="course-button" onclick="exploreCourses()">Explore courses</button>
+        </div>
+    </div>
+    </div> 
+    <script>
+        function exploreCourses() {
+            // You can use window.location.href to navigate to the "/courses" page
+            window.location.href = "/courses";
+        }
+    </script>
+</body>
+</html>
+
+          --> 
+
+
+          <!DOCTYPE html>
+          <html lang="en">
+          
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                  body {
+                      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                      margin: 0;
+                      padding: 0;
+                  }
+          
+                  /* .navbar {
+                      overflow: hidden;
+                      background-color: black;
+                      color: white;
+                      padding: 10px;
+                  } */ 
+                  .navbar {
+                       overflow: hidden;
+                        background-color: #333;
+                        height: 40px; /* Adjust the height to your preference */ 
+                        color:white;
+                        padding:8px;
+                    }
+          
+                  .navbar a {
+                      float: left;
+                      display: block;
+                      color: white;
+                      text-align: center;
+                      padding: 14px 16px;
+                      text-decoration: none;
+                  }
+          
+                  .navbar a:hover {
+                      background-color: #ddd;
+                      color: black;
+                  }
+          
+                  .home-container {
+                      text-align: center;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      height: 100vh;
+                      background-color: #f4f4f4;
+                      padding: 20px;
+                  }
+          
+                  .color-changing-heading {
+                      font-size: 40px;
+                      animation: changeColor 5s infinite;
+                  }
+          
+                  @keyframes changeColor {
+                      0% { color: red; }
+                      25% { color: blue; }
+                      50% { color: green; }
+                      75% { color: orange; }
+                      100% { color: rgb(0, 109, 128); }
+                  }
+          
+                  .text-para {
+                      font-size: 18px;
+                      margin-top: 10px;
+                  }
+          
+                  .para {
+                      font-size: 16px;
+                      margin-top: 10px;
+                  }
+          
+                  .course-button {
+                      height: 40px;
+                      width: 180px;
+                      border-radius: 15px;
+                      border: 1px solid pink;
+                      background-color: transparent;
+                      color: white;
+                      font-size: 15px;
+                      cursor: pointer;
+                      transition: background-color 0.3s;
+                      margin-top: 20px;
+                  }
+          
+                  .course-button:hover {
+                      background-color: #007BFF;
+                  }
+          
+                  /* Footer Styles */
+                  .footer {
+                      background-color: black;
+                      color: white;
+                      text-align: center;
+                      padding: 20px 0;
+                  }
+          
+                  .footer p {
+                      margin: 0;
+                      font-size: 14px;
+                  }
+          
+                  .footer-links {
+                      display: flex;
+                      justify-content: center;
+                      margin-top: 15px;
+                  }
+          
+                  .footer-links a {
+                      color: white;
+                      text-decoration: none;
+                      margin: 0 15px;
+                      font-weight: bold;
+                      font-size: 14px;
+                  }
+              </style>
+              <link rel="stylesheet" href="{{ url_for('static', path='/dashboardstyles.css') }}">
+              <title>Dashboard</title>
+          </head>
+          
+          <body>
+              <div class="navbar">
+                  <a href="/home">Home</a>
+                  <a href="/registration">Student Registration</a>
+                  <a href="/studentdetails">Student Details</a>
+                  <a href="/contactus">Contact Us</a>
+                  <a style="float: right;" href="/logout">Logout</a>
+                  <a style="float: right;" href="/loginsignup">Login/Signup</a>
+              </div>
+          
+              <div class="home-container">
+                  <div id="homePage">
+                      <div class="my-container">
+                          <h1 class="color-changing-heading"><marquee>Restricted by opportunities?</marquee></h1>
+                          <p class="text-para">
+                              Get the tech career <br />
+                              You deserve. Faster.
+                          </p>
+                          <p class="para">
+                              Structured courses that get you there faster with confidence
+                          </p>
+                          <button class="course-button" onclick="exploreCourses()">Explore Courses</button>
+                      </div>
+                  </div>
+              </div>
+          
+              <!-- Footer Section -->
+              <footer class="footer">
+                  <div>
+                      <p>&copy; 2023 Website. All rights reserved. | Designed by Your Vasavi poluri</p>
+                  </div>
+                  <div class="footer-links">
+                      <a href="/privacypolicy">Privacy Policy</a>
+                      <a href="/termsofservices">Terms of Service</a>
+                      <a href="/contactus">Contact Us</a>
+                  </div>
+              </footer>
+          
+              <script>
+                  function exploreCourses() {
+                      window.location.href = "/courses";
+                  }
+              </script>
+          </body>
+          
+          </html>
+          

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+    <title>Login</title>
+</head> 
+
+<body>
+    <div class="container">
+        <h2 class="h" align="center"> Login Form</h2>
+        <form action="/login" method="post" id="loginForm">
+            {% if message %}
+                <p class="error-message">{{ message }}</p>
+            {% endif %}
+
+           <label class="h" for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" name="username" required>  <!-- Change name to "username" -->
+            <label class="h" for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password" required>
+            <!-- Remove the hidden "access_token" field -->
+            <a href="/reset" class="link">Forgot Password</a>
+            <div class="button-container">
+                <button type="submit" class="button">Login</button>
+                <button type="button" class="button" onclick="window.location.href='/signup'">Signup</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
