@@ -13,7 +13,8 @@ from starlette.responses import Response
 import string 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import smtplib
+import smtplib 
+from fastapi import Query
 from starlette.responses import RedirectResponse
 import random 
 import secrets
@@ -152,8 +153,6 @@ def is_valid_password(password):
         errors.append("Password doesn't contain a digit")
 
     return errors  # List of error messages, empty if password is valid
-
-
 
 #login route 
 @app.post("/login", response_class=HTMLResponse)
@@ -527,6 +526,7 @@ def delete_student(request:Request,common_id: int,current_user: dict = Depends(g
 
     # Redirect to the student details page after deleting 
     return RedirectResponse(url="/studentdetails", status_code=302)           
+    3
 
 @app.get("/contactus", response_class=HTMLResponse)
 def dashboard(request: Request, current_user: dict = Depends(get_current_user_from_cookie)):
@@ -568,3 +568,105 @@ def logout_get(response: Response):
         raise HTTPException(status_code=400, detail="Cookie name not found.") from exc
     except Exception as exception:
         raise HTTPException(status_code=500, detail=str(exception)) from exception 
+
+
+@app.get("/student/{common_id}", response_class=JSONResponse)
+def get_student_details(
+    request: Request,
+    common_id: int,
+    firstname: str = Query(None, description="Filter students by first name"),
+    current_user: dict = Depends(get_current_user_from_cookie)
+):
+    try:
+        # Check if the user is authenticated
+        if not current_user or not current_user.get('username'):
+            raise HTTPException(status_code=401, detail="Unauthorized access. Please log in.")
+
+        # Build the query based on the first name, if provided
+        query = {"_id": common_id}
+        if firstname:
+            query["firstname"] = firstname  # Use "firstname" as the MongoDB field name
+
+        # Find the student by ID and optional first name filter in the MongoDB collection
+        student = students_col.find_one(query)
+
+        if student:
+            # Return the student details as a JSON response
+            return JSONResponse(content={"student": student, "user": current_user.get('username')})
+        else:
+            # If the student ID is not found, return a 404 Not Found response
+            raise HTTPException(status_code=404, detail="Student not found")
+
+    except Exception as e:
+        # Handle unexpected exceptions
+        print(f"Error: {e}")
+        # Return a 500 Internal Server Error response
+        raise HTTPException(status_code=500, detail="Internal Server Error") 
+    
+@app.get("/student/{common_id}", response_class=JSONResponse)
+def get_student_details(
+    request: Request,
+    common_id: int,
+    firstname: str = Query(None, description="Filter students by first name"),
+    current_user: dict = Depends(get_current_user_from_cookie)
+):
+    try:
+        # Check if the user is authenticated
+        if not current_user or not current_user.get('username'):
+            raise HTTPException(status_code=401, detail="Unauthorized access. Please log in.")
+
+        # Build the query based on the first name, if provided
+        query = {"_id": common_id}
+        if firstname:
+            query["firstname"] = firstname  # Use "firstname" as the MongoDB field name
+
+        # Find the student by ID and optional first name filter in the MongoDB collection
+        student = students_col.find_one(query)
+
+        if student:
+            # Return the student details as a JSON response
+            return JSONResponse(content={"student": student, "user": current_user.get('username')})
+        else:
+            # If the student ID is not found, return a 404 Not Found response
+            raise HTTPException(status_code=404, detail="Student not found")
+
+    except Exception as e:
+        # Handle unexpected exceptions
+        print(f"Error: {e}")
+        # Return a 500 Internal Server Error response
+        raise HTTPException(status_code=500, detail="Internal Server Error") 
+
+
+@app.get("/student/{common_id}", response_class=JSONResponse)
+def get_student_details(
+    request: Request,
+    common_id: int,
+    current_user: dict = Depends(get_current_user_from_cookie),
+    **kwargs: str
+):
+    try:
+        # Check if the user is authenticated
+        if not current_user or not current_user.get('username'):
+            raise HTTPException(status_code=401, detail="Unauthorized access. Please log in.")
+
+        # Build the query based on the received query parameters
+        query = {"_id": common_id}
+        for key, value in kwargs.items():
+            query[key] = value
+
+        # Find the student by ID and optional filters in the MongoDB collection
+        student = students_col.find_one(query)
+
+        if student:
+            # Return the student details as a JSON response
+            return JSONResponse(content={"student": student, "user": current_user.get('username')})
+        else:
+            # If the student ID is not found, return a 404 Not Found response
+            raise HTTPException(status_code=404, detail="Student not found")
+
+    except Exception as e:
+        # Handle unexpected exceptions
+        print(f"Error: {e}")
+        # Return a 500 Internal Server Error response
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
