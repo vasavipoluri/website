@@ -10,14 +10,15 @@ body {
 
 } 
 .container {
-    height: 450px;
-    width: 450px;
-    background: linear-gradient(darkblue,black);  
+    height: 460px;
+    width: 370px;
+    /* background: linear-gradient(blue,rgb(170, 131, 205));   */ 
+    background:linear-gradient(navy,black);
     color: white; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(11, 8, 8, 0.1);
-    justify-content: center;
+    justify-content: center; 
 } 
 
 
@@ -73,4 +74,5 @@ input {
 
 .error-message {
     color: red;
-} 
+}  
+

@@ -79,6 +79,15 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
         print(f"Exception: {e}")
         raise
 
+# Modify the get_user function to print the username being searched
+def get_user(username: str):
+    print(f"Searching for user: {username}")
+    Existing_username = users_col.find_one({'username': username})
+    if not Existing_username:
+        return False
+    else:
+        return Existing_username
+
 #decode token
 def decode_token(token: str) -> dict:
     credentials_exception = HTTPException(
@@ -144,14 +153,7 @@ def is_valid_password(password):
 
     return errors  # List of error messages, empty if password is valid
 
-# Modify the get_user function to print the username being searched
-def get_user(username: str):
-    print(f"Searching for user: {username}")
-    Existing_username = users_col.find_one({'username': username})
-    if not Existing_username:
-        return False
-    else:
-        return Existing_username
+
 
 #login route 
 @app.post("/login", response_class=HTMLResponse)

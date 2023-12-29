@@ -1,271 +1,322 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-.navbar {
-    overflow: hidden;
-    background-color: black;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-.navbar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            height: 40px; /* Adjust the height to your preference */
+            color: white;
+            padding: 8px;
+        }
 
-.navbar a:hover {
-    background-color: #ddd;
-    color: black;
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .home-container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 160vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+            
+        } 
+
+        .page{
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end; 
+            margin-left: 5px; 
+            position: absolute; 
+            left: 15px;  
+            color:white  
+            
+            
+        }
+
+        .color-changing-heading {
+            font-size: 40px;
+            animation: changeColor 5s infinite;
+        }
+
+        @keyframes changeColor {
+            0% { color: rgb(0, 109, 128); }
+            25% { color: #4911c2; }
+            50% { color: green; }
+            75% { color: orange; }
+            100% { color: red; }
+        }
+
+        .text-para {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .para {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .m-para {
+            font-size: 20px;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .course-button {
+            height: 40px;
+            width: 180px;
+            border-radius: 15px;
+            border: 1px solid pink;
+            background-color: transparent;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .course-button:hover {
+            background-color: #007BFF;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 14px;
+        } 
+        .card-section {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .marquee-container { 
+        overflow: hidden;
+        white-space: nowrap;
+        animation: marquee 15s linear infinite; /* Adjust the duration based on your preference */
+    } 
+ 
+    .image{
+        height:30px;
+        width:30px;
+    }
+
+    .card {
+        width: 250px;
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+    }
+
+    .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    } 
+
+    .marque-des{
+        color: white;
+        font-size: 15px;
+    }
+
+    @keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 } 
 
-.course-button{
-    height:40px;
-    width:180px;
-    border-radius: 15px;
-    border: 1px solid pink;
-    background-color: transparent;
-    color: white; 
-    font-size: 15px;
+    /* Featured Section */
+    .featured-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            flex: 1;
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        } 
+
+        .featured-heading {
+        font-size: 16px;
+        color: white; 
+        text-align: left;
 }
-
-.my-container {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* This ensures that the container takes the full height of the viewport */
-}
-
-/* Define a class for the heading */
-.color-changing-heading {
-      font-size: 40px;
-      animation: changeColor 5s infinite; /* Use the changeColor animation for 5 seconds and repeat infinitely */
-    }
-
-    /* Define the keyframes for the animation */
-    @keyframes changeColor {
-      0% { color: red; }
-      25% { color: blue; }
-      50% { color: green; }
-      75% { color: orange; }
-      100% { color: rgb(0, 109, 128); }
-    }
-
 </style>
     <link rel="stylesheet" href="{{ url_for('static', path='/dashboardstyles.css') }}">
     <title>Dashboard</title>
 </head>
+
 <body>
     <div class="navbar">
         <a href="/home">Home</a>
         <a href="/registration">Student Registration</a>
         <a href="/studentdetails">Student Details</a>
-        <a href="/contactus">Contact Us</a> 
-        <a style="float: right;" href="/logout">Logout</a> 
-        <a style="float: right;" href="/loginsignup">Login/Signup</a> 
-        
+        <a href="/contactus">Contact Us</a>
+        <a style="float: right;" href="/logout">Logout</a>
+        <a style="float: right;" href="/loginsignup">Login/Signup</a>
     </div>
+
     <div class="home-container">
         <div id="homePage">
             <div class="my-container">
-                <!-- <h1 ><marquee>Hi! Welcome to the Dashboard</marquee></h1> -->
-                <!-- <h1 class="color-changing-heading"><marquee>Restricted by opportunities?</marquee></h1>
+                <h1 class="color-changing-heading">Restricted by opportunities?</h1>
                 <p class="text-para">
-                Get the tech career <br/>
-                You deserve. Faster.
-            </p>
-            <p class="para">
-                Stuructured courses that get you there faster with confidence
-            </p> 
-            <button class="course-button" onclick="exploreCourses()">Explore courses</button>
+                    Get the tech career <br />
+                    You deserve. Faster.
+                </p>
+                <p class="para">
+                    Structured courses that get you there faster with confidence
+                </p>
+                <button class="course-button" onclick="exploreCourses()">Explore Courses</button>
+            </div> 
+            <div class="page">
+            <h1 class="m-para">Mentorship sessions</h1> 
+            <!-- <p class="m-para">personalised guidance to prepare you for your interview needs</p>  -->
+            </div>
+            <div class="card-section">
+                <div class="marquee-container">
+                    <!-- Duplicate cards to create a scrolling effect -->
+                    <div class="card">
+                        <img class="image" src="https://alis.alberta.ca/media/699122/panel-job-interview-istock-1152769811.jpg" alt="Course 1 Image">
+                        <p class="marque-des">Mock interview</p>
+                        
+                    </div>
+                    <div class="card">
+                        <img class="image" src="https://images.squarespace-cdn.com/content/v1/5ff2828c15120a7c1d219864/1623875266044-V67TA217ZTB665DQZA6F/I+hired+women+from+Fiverr+to+Review+my+Tinder+Profile.jpg" alt="Course 2 Image">
+                        <p class="marque-des">Profile review</p>
+                        
+                    </div>
+                    <div class="card">
+                        <img class="image" src="https://storage.googleapis.com/profit-prod/wp-content/uploads/2022/12/1c366a4d-beginners-guide.jpg" alt="Course 2 Image">
+                        <p class="marque-des">Project guidance</p>
+                        
+                    </div> 
+
+                    <div class="card">
+                        <img class="image" src="https://qph.cf2.quoracdn.net/main-qimg-38efa5f707338fbef67fa98f0c3771d4-pjlq" alt="Course 2 Image">
+                        <p class="marque-des">Fastest 1:1 doubt support</p>
+                        
+                    </div> 
+                    <div class="card">
+                        <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjYTEZsl_6wv38keD49cxa2DE4wZhObG17N3CJdW_Uz1Gl7zVv-c6hn7kvjDiUs3Twq8c&usqp=CAU" alt="Course 2 Image">
+                        <p class="marque-des">Structured + problem solving based</p>
+                        </div> 
+                    
+                </div>
+             
+            </div> 
+            <!-- Featured Section --> 
+            <div class="featured-heading">
+            <h2>Unlock Your Potential with these Features</h2>
+            </div>
+            <div class="featured-section">
+               
+                <div class="feature-box">
+                    <div class="feature-icon">🚀</div>
+                    <h2>Accelerated Learning</h2>
+                    <p>Our courses are designed for fast-paced, efficient learning.</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon">🎓</div>
+                    <h2>Expert Instructors</h2>
+                    <p>Learn from industry experts with real-world experience.</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon">💻</div>
+                    <h2>Hands-on Projects</h2>
+                    <p>Apply your skills with hands-on projects and practical exercises.</p>
+                </div>
+            </div>
         </div>
     </div>
-    </div> 
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div>
+            <p>&copy; 2023 Website. All rights reserved. | Designed by Your Vasavi poluri</p>
+        </div>
+        <div class="footer-links">
+            <a href="/privacypolicy">Privacy Policy</a>
+            <a href="/termsofservices">Terms of Service</a>
+            <a href="/contactus">Contact Us</a>
+        </div>
+    </footer>
+
     <script>
         function exploreCourses() {
-            // You can use window.location.href to navigate to the "/courses" page
             window.location.href = "/courses";
         }
     </script>
 </body>
+
 </html>
-
-          --> 
-
-
-          <!DOCTYPE html>
-          <html lang="en">
-          
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <style>
-                  body {
-                      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                      margin: 0;
-                      padding: 0;
-                  }
-          
-                  /* .navbar {
-                      overflow: hidden;
-                      background-color: black;
-                      color: white;
-                      padding: 10px;
-                  } */ 
-                  .navbar {
-                       overflow: hidden;
-                        background-color: #333;
-                        height: 40px; /* Adjust the height to your preference */ 
-                        color:white;
-                        padding:8px;
-                    }
-          
-                  .navbar a {
-                      float: left;
-                      display: block;
-                      color: white;
-                      text-align: center;
-                      padding: 14px 16px;
-                      text-decoration: none;
-                  }
-          
-                  .navbar a:hover {
-                      background-color: #ddd;
-                      color: black;
-                  }
-          
-                  .home-container {
-                      text-align: center;
-                      display: flex;
-                      flex-direction: column;
-                      align-items: center;
-                      justify-content: center;
-                      height: 100vh;
-                      background-color: #f4f4f4;
-                      padding: 20px;
-                  }
-          
-                  .color-changing-heading {
-                      font-size: 40px;
-                      animation: changeColor 5s infinite;
-                  }
-          
-                  @keyframes changeColor {
-                      0% { color: red; }
-                      25% { color: blue; }
-                      50% { color: green; }
-                      75% { color: orange; }
-                      100% { color: rgb(0, 109, 128); }
-                  }
-          
-                  .text-para {
-                      font-size: 18px;
-                      margin-top: 10px;
-                  }
-          
-                  .para {
-                      font-size: 16px;
-                      margin-top: 10px;
-                  }
-          
-                  .course-button {
-                      height: 40px;
-                      width: 180px;
-                      border-radius: 15px;
-                      border: 1px solid pink;
-                      background-color: transparent;
-                      color: white;
-                      font-size: 15px;
-                      cursor: pointer;
-                      transition: background-color 0.3s;
-                      margin-top: 20px;
-                  }
-          
-                  .course-button:hover {
-                      background-color: #007BFF;
-                  }
-          
-                  /* Footer Styles */
-                  .footer {
-                      background-color: black;
-                      color: white;
-                      text-align: center;
-                      padding: 20px 0;
-                  }
-          
-                  .footer p {
-                      margin: 0;
-                      font-size: 14px;
-                  }
-          
-                  .footer-links {
-                      display: flex;
-                      justify-content: center;
-                      margin-top: 15px;
-                  }
-          
-                  .footer-links a {
-                      color: white;
-                      text-decoration: none;
-                      margin: 0 15px;
-                      font-weight: bold;
-                      font-size: 14px;
-                  }
-              </style>
-              <link rel="stylesheet" href="{{ url_for('static', path='/dashboardstyles.css') }}">
-              <title>Dashboard</title>
-          </head>
-          
-          <body>
-              <div class="navbar">
-                  <a href="/home">Home</a>
-                  <a href="/registration">Student Registration</a>
-                  <a href="/studentdetails">Student Details</a>
-                  <a href="/contactus">Contact Us</a>
-                  <a style="float: right;" href="/logout">Logout</a>
-                  <a style="float: right;" href="/loginsignup">Login/Signup</a>
-              </div>
-          
-              <div class="home-container">
-                  <div id="homePage">
-                      <div class="my-container">
-                          <h1 class="color-changing-heading"><marquee>Restricted by opportunities?</marquee></h1>
-                          <p class="text-para">
-                              Get the tech career <br />
-                              You deserve. Faster.
-                          </p>
-                          <p class="para">
-                              Structured courses that get you there faster with confidence
-                          </p>
-                          <button class="course-button" onclick="exploreCourses()">Explore Courses</button>
-                      </div>
-                  </div>
-              </div>
-          
-              <!-- Footer Section -->
-              <footer class="footer">
-                  <div>
-                      <p>&copy; 2023 Website. All rights reserved. | Designed by Your Vasavi poluri</p>
-                  </div>
-                  <div class="footer-links">
-                      <a href="/privacypolicy">Privacy Policy</a>
-                      <a href="/termsofservices">Terms of Service</a>
-                      <a href="/contactus">Contact Us</a>
-                  </div>
-              </footer>
-          
-              <script>
-                  function exploreCourses() {
-                      window.location.href = "/courses";
-                  }
-              </script>
-          </body>
-          
-          </html>
-          

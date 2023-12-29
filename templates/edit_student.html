@@ -38,13 +38,19 @@
             text-align: center;
             font-weight: bold;
         
-        }
+        } 
+        .reg-container{
+    background-image: url("https://images.unsplash.com/photo-1517873569652-f231d7134909?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    height: 130vh;
+    background-size: cover;
+    margin: 0px;
+}
         </style>
         <link rel="stylesheet" href="{{ url_for('static', path='/dashboardstyles.css') }}">
 </head>
 
 <body>
-    <div class="home-container">
+    <div class="reg-container">
     <div class="container">
         <h2 class="main-heading">Edit Your Application</h2> 
         <form method="post" action="{{ url_for('edit_student', common_id=student._id) }}">

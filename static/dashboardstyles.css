@@ -25,7 +25,8 @@ h3{
   }
   body {
     font-family: 'Arial', sans-serif;
-    background: radial-gradient(black,rgb(139, 0, 104));
+    /* background: radial-gradient(black,rgb(139, 0, 104)); */ 
+    background-color: rgba(0, 0, 128, 0.032);
     /* background: linear-gradient(darkblue,black,red,violet); */
     /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvbp5_1AhGDWYEC-0Miq62XxbsCf1W-66AeJcHWdCz3ehiMKsBllVs17C1YE43d4Pnk_s&usqp=CAU"); */
     /* background-image: url("https://img.freepik.com/free-photo/blue-office-stationery-set-with-laptop_23-2147843325.jpg");  */
@@ -48,11 +49,12 @@ h2 {
     
 }
  .home-container{
-    background: radial-gradient(black,rgb(139, 0, 104));
+    background: radial-gradient(black,rgb(139, 0, 104)); 
+    /* background: linear-gradient(black,navy); */
     /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvbp5_1AhGDWYEC-0Miq62XxbsCf1W-66AeJcHWdCz3ehiMKsBllVs17C1YE43d4Pnk_s&usqp=CAU"); */
     /* background-image: url("https://img.freepik.com/free-photo/blue-office-stationery-set-with-laptop_23-2147843325.jpg");  */
     /* background-image: url("https://wallpapercosmos.com/w/full/b/a/9/1209998-3840x2160-desktop-4k-glow-in-the-dark-background-photo.jpg"); */
-    height: 100vh;
+    height: 130vh;
     background-size: cover;
     margin: 0px;
 } 
@@ -75,8 +77,8 @@ h2 {
     margin-bottom: 20px;
 }
 .text-para{
-    font-weight: 450;
-    font-size: 50px;
+    font-weight: 100;
+    font-size: 30px;
     font-family: sans-serif;
     color:white;
 } 

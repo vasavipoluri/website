@@ -77,19 +77,22 @@
             background-color: white;
             color: black
         } 
-        .delete-button{
-            height:20px;
-            width:40px;
-            border-radius: 15px;
-            border: 1px solid pink;
-            background-color: transparent;
-            color: black; 
-            font-size: 9px;
-            cursor: pointer; 
-            text-align: center;
-        }
-        
-        </style>
+        .delete-button {
+        height: 20px;
+        width: 40px;
+        border-radius: 15px;
+        background-color: transparent;
+        color: black;
+        font-size: 13px;
+        cursor: pointer;
+        text-align: center;
+        border: none; /* Remove border */
+        padding: 0; /* Remove padding */
+}
+
+        </style> 
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
             <link rel="stylesheet" href="{{ url_for('static', path='/dashboardstyles.css') }}">
             <title>Dashboard</title>
         </head>
@@ -129,10 +132,16 @@
                 <td width="200">{{ user.collegename }}</td>
                 <td width="200">{{ user.degree }}</td>
                 <td width="200">{{ user.course }}</td>
-                <td width="100">
+                <!-- <td width="100">
                     <a href="{{ url_for('edit_student', common_id=user._id) }}">Edit</a>
                     <form method="post" action="{{ url_for('delete_student', common_id=user._id) }}" style="display:inline;">
                         <button type="submit" align="center" class="delete-button">Delete</button>
+                    </form>
+                </td> --> 
+                <td width="100">
+                    <a href="{{ url_for('edit_student', common_id=user._id) }}"><i class="fas fa-edit"></i></a>
+                    <form method="post" action="{{ url_for('delete_student', common_id=user._id) }}" style="display:inline;">
+                        <button type="submit" align="center" class="delete-button"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </td>
             </tr>
