@@ -10,6 +10,12 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+        } 
+
+        .home-container{
+            height: 110vh;
+            background-size: cover;
+            margin: 0px;
         }
 
         .navbar {
@@ -46,7 +52,32 @@
             color: #333;
             text-align: center;
         }
+        /* Footer Styles */
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
 
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 14px;
+        } 
         .courses {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -74,7 +105,14 @@
             color: #555;
             margin-top: 15px;
             line-height: 1.5;
+        } 
+        .reg-btn{
+            height:35px;
+            width: 120px; 
+            border-radius: 8px; 
+            font-size: 14px;
         }
+
     </style>
     <title>Courses We Offered</title>
 </head>
@@ -95,43 +133,68 @@
            <div class="course">
                 <h2>Python</h2>
                 <p>Learn Python programming language and its applications. Explore the fundamentals and practical uses in software development.</p>
+                <button class="reg-btn" onclick="openRegistrationPage()">Register</button>
             </div>
 
             <div class="course">
                 <h2>Web Development</h2>
                 <p>Build responsive and interactive websites with HTML, CSS, and JavaScript. Dive into front-end and back-end development for a complete understanding.</p>
+                <button class="reg-btn" onclick="openRegistrationPage()">Register</button>
             </div>
 
             <div class="course">
                 <h2>Android Development</h2>
                 <p>Create Android applications using Java or Kotlin and also you can use c++. Understand the Android development ecosystem and build functional mobile apps.</p>
+                <button class="reg-btn" onclick="openRegistrationPage()">Register</button>
             </div>
 
             <div class="course">
                 <h2>Data Science</h2>
                 <p>Explore the world of data science and machine learning. Analyze data, build models, and derive insights for informed decision-making.</p>
+                <button class="reg-btn" onclick="openRegistrationPage()">Register</button>
             </div>
 
             <div class="course">
                 <h2>Cyber Security</h2>
                 <p>Cybersecurity, digital security, or information technology security is the protection of computer systems and networks from attacks by malicious actors that may result in unauthorized.</p>
+                <button class="reg-btn" onclick="openRegistrationPage()">Register</button>
             </div>
 
             <div class="course">
                 <h2>Digital Marketing</h2>
                 <p>Marketing that uses the Internet and online-based digital technologies such as desktop computers, mobile phones, and other digital media and platforms to promote products and services.</p>
+                <button class="reg-btn" onclick="openRegistrationPage()">Register</button>
             </div>
             <div class="course">
                 <h2>Machine Learning</h2>
                 <p>Machine learning is an area of artificial intelligence and computer science that comprises supervised and unsupervised learning and includes the development of software and algorithms that can make predictions based on data.</p>
+                <button class="reg-btn" onclick="openRegistrationPage()">Register</button>
             </div>
 
             <div class="course">
                 <h2>Artificial Intelligence</h2>
                 <p>The field of artificial intelligence covers programming, natural language processing, coding, mathematics, computer science, and many other disciplines.</p>
+                <button class="reg-btn" onclick="openRegistrationPage()">Register</button>
             </div>
         </div>
-    </div>
+    </div> 
+    <footer class="footer">
+        <div>
+            <p>&copy; 2023 Website. All rights reserved. | Designed by Your Vasavi poluri</p>
+        </div>
+        <div class="footer-links">
+            <a href="/privacypolicy">Privacy Policy</a>
+            <a href="/termsofservices">Terms of Service</a>
+            <a href="/contactus">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        function openRegistrationPage() {
+            // Redirect to the registration.html page
+            window.location.href = '/registration';
+        }
+    </script>
 </body>
 
 </html>

@@ -56,7 +56,32 @@
             align-items: center;
             justify-content: center;
         }
-        
+        /* Footer Styles */
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 14px;
+        } 
         .reset-button{
             /* border-radius: 5px; 
             width:70px; 
@@ -147,7 +172,18 @@
         {% endif %}
             </div>
         </div>
-        </form>
+        </form> 
+       <footer class="footer">
+        <div>
+            <p>&copy; 2023 Website. All rights reserved. | Designed by Your Vasavi poluri</p>
+        </div>
+        <div class="footer-links">
+            <a href="/privacypolicy">Privacy Policy</a>
+            <a href="/termsofservices">Terms of Service</a>
+            <a href="/contactus">Contact Us</a>
+        </div>
+    </footer>
+
     <script>
     function toggleDropdown() {
         var dropdownOptions = document.getElementById("courseOptions");
