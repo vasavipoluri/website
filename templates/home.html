@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,11 +14,11 @@
         }
 
         .navbar {
-            overflow: hidden;
-            background-color: #333;
-            height: 40px; /* Adjust the height to your preference */
-            color: white;
-            padding: 8px;
+           overflow: hidden;
+           background-color: black;
+           height: 40px; /* Adjust the height to your preference */
+           color: white;
+           padding: 8px;
         }
 
         .navbar a {
@@ -45,19 +47,18 @@
             
         } 
 
-        .page{
+        /* .page{
             text-align: left;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            justify-content: flex-end; 
-            margin-left: 5px; 
-            position: absolute; 
-            left: 15px;  
+            justify-content: flex-center; 
+            /* margin-left: 5px; 
+            position: absolute;  */
+            /* left: 15px;  
             color:white  
             
-            
-        }
+        } */ 
 
         .color-changing-heading {
             font-size: 40px;
@@ -67,8 +68,8 @@
         @keyframes changeColor {
             0% { color: rgb(0, 109, 128); }
             25% { color: #4911c2; }
-            50% { color: green; }
-            75% { color: orange; }
+            50% { color: hsl(133, 100%, 25%); }
+            75% { color: rgb(60, 233, 17); }
             100% { color: red; }
         }
 
@@ -83,26 +84,29 @@
         }
 
         .m-para {
-            font-size: 20px;
-            margin-top: 10px;
-            color: white;
+            font-size: 26px;
+            margin: 20px;
+            color: orange;   
+            /* animation: changeColor 5s infinite; */
+            transition: font-size 0.5s ease;
         }
 
         .course-button {
             height: 40px;
             width: 180px;
-            border-radius: 15px;
+            border-radius: 5px;
             border: 1px solid pink;
-            background-color: transparent;
+            background-color: transparent;    
             color: white;
             font-size: 15px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-top: 20px;
+            margin-top: 30px; 
+            margin-bottom: 30px;
         }
 
         .course-button:hover {
-            background-color: #007BFF;
+            background-color:black;
         }
 
         /* Footer Styles */
@@ -139,15 +143,24 @@
     .marquee-container { 
         overflow: hidden;
         white-space: nowrap;
-        animation: marquee 15s linear infinite; /* Adjust the duration based on your preference */
+    }
+
+    .marquee-cards {
+    display: inline-block;
+    animation: marquee 15s linear infinite; /* Adjust the duration based on your preference */
     } 
  
     .image{
-        height:30px;
-        width:30px;
+        height:150px;
+        width:150px;
     }
 
-    .card {
+    .profile{
+        height:90px;
+        width:90px;
+        border-radius: 80px;
+    }
+    .card { 
         width: 250px;
         padding: 10px;
         margin: 10px;
@@ -169,14 +182,15 @@
         font-size: 15px;
     }
 
-    @keyframes marquee {
+     @keyframes marquee {
     0% {
         transform: translateX(100%);
     }
     100% {
         transform: translateX(-100%);
-    }
-} 
+    } 
+}
+
 
     /* Featured Section */
     .featured-section {
@@ -186,13 +200,44 @@
         }
 
         .feature-box {
-            flex: 1;
+            flex: 1; 
             padding: 20px;
             margin: 10px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+        } 
+        .my-box-para{
+             color:orange;
+            /* animation: changeColor 5s infinite; */
+            font-size: 26px;
+            margin-bottom: 20px; 
+            margin-top: 40px;
+            transition: font-size 0.5s ease;
+        } 
+         
+        .style{
+            color: grey
+        }
+
+        .my-box {
+            flex: 1; 
+            width: 320px;
+            padding: 20px;
+            margin: 10px;
+            background-color: rgb(226, 239, 243);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        } 
+        .my-box:hover {
+            transform: scale(1.05);
+        }
+        .faculty{
+            font-size: 20px;
+            text-decoration: none;
+            color:black;
         }
 
         .feature-box:hover {
@@ -205,17 +250,32 @@
         } 
 
         .featured-heading {
-        font-size: 16px;
-        color: white; 
-        text-align: left;
-}
+        font-size: 26px;
+        /* color: white;  */ 
+        /* animation: changeColor 5s infinite; */ 
+        color:orange;
+        text-align: center; 
+        margin-top: 40px;
+        margin-bottom: 20px;
+        transition: font-size 0.5s ease;
+} 
+
+.mentors{
+    margin-top:10px;
+} 
+/* .header {
+            text-align: center;
+            padding: 50px;
+            font-size: 40px;
+            transition: font-size 0.5s ease;
+        } */
 </style>
     <link rel="stylesheet" href="{{ url_for('static', path='/dashboardstyles.css') }}">
     <title>Dashboard</title>
 </head>
 
 <body>
-    <div class="navbar">
+    <div class="navbar"> 
         <a href="/home">Home</a>
         <a href="/registration">Student Registration</a>
         <a href="/studentdetails">Student Details</a>
@@ -237,12 +297,13 @@
                 </p>
                 <button class="course-button" onclick="exploreCourses()">Explore Courses</button>
             </div> 
-            <div class="page">
-            <h1 class="m-para">Mentorship sessions</h1> 
+            <div class="mentors">
+            <h1 class="m-para" id="zoomingHeading1">Mentorship sessions</h1> 
             <!-- <p class="m-para">personalised guidance to prepare you for your interview needs</p>  -->
-            </div>
+            
             <div class="card-section">
-                <div class="marquee-container">
+                <div class="marquee-container"> 
+                    <div class="marquee-cards">
                     <!-- Duplicate cards to create a scrolling effect -->
                     <div class="card">
                         <img class="image" src="https://alis.alberta.ca/media/699122/panel-job-interview-istock-1152769811.jpg" alt="Course 1 Image">
@@ -268,15 +329,16 @@
                     <div class="card">
                         <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjYTEZsl_6wv38keD49cxa2DE4wZhObG17N3CJdW_Uz1Gl7zVv-c6hn7kvjDiUs3Twq8c&usqp=CAU" alt="Course 2 Image">
                         <p class="marque-des">Structured + problem solving based</p>
-                        </div> 
-                    
+                        </div>       
                 </div>
-             
             </div> 
+            </div> 
+            </div>  
+
             <!-- Featured Section --> 
-            <div class="featured-heading">
-            <h2>Unlock Your Potential with these Features</h2>
-            </div>
+            <!-- <div class="featured-heading"> -->
+            <h2  class="featured-heading" id="zoomingHeading2">Unlock Your Potential with these Features</h2>
+            <!-- </div> -->
             <div class="featured-section">
                
                 <div class="feature-box">
@@ -298,7 +360,36 @@
                 </div>
             </div>
         </div>
+    
+    <h1 class="my-box-para" id="zoomingHeading3">Faculty that brings out the best in you</h1>  
+<div class="featured-section">
+    <div class="my-box">
+        <img src="https://etimg.etb2bimg.com/photo/90936262.cms" class="profile"/>
+        <h3 class="faculty">Ankush Mehtha</h3>
+        <p>Co-Founder & Instructor</p>
+        <p class="style">Teaches</p> 
+        <p>
+            Data Science , Machine Learning
+            &Cyber Security</p>
+    </div> 
+    <div class="my-box">
+        <img src="https://indiantelevision.com/sites/default/files/styles/smartcrop_800x800/public/images/tv-images/2022/06/27/udit_0.jpg?itok=d4yjQPZ9" class="profile"/> 
+        <h3 class="faculty">Parikh Jain</h3> 
+        <p>Instructor & Founding Member</p>
+        <p class="style">Teaches</p> 
+        <p>Basics of Python with DSA, Web development , Digital Marketing,
+             Product Companies Interview Prep</p>
+    </div> 
+    <div class="my-box">
+        <img src="https://static.toiimg.com/photo/98476173.cms" class="profile"/> 
+        <h3 class="faculty">Nidhi Agarwal</h3>
+        <p>Founding member & Product Manager</p>
+        <p class="style">Teaches</p>
+        <p> Artificial Intelligence & Andriod Development
+            Data Analytics Course</p>
     </div>
+</div>
+</div> 
 
     <!-- Footer Section -->
     <footer class="footer">
@@ -316,7 +407,35 @@
         function exploreCourses() {
             window.location.href = "/courses";
         }
-    </script>
+    </script> 
+    <script>
+        window.addEventListener('scroll', function () {
+            var scrollPosition = window.scrollY;
+
+            // Adjust the factor to control the zoom intensity
+            var zoomFactor = 0.02; 
+
+
+            // Calculate the new font size based on the scroll position
+            var newSize = 40 - scrollPosition * zoomFactor;
+
+            // Ensure the font size doesn't go below a certain limit
+            newSize = Math.max(newSize, 20); 
+            
+
+            // Apply the new font size to the heading
+            document.getElementById('zoomingHeading1').style.fontSize = newSize + 'px'; 
+           
+
+            document.getElementById('zoomingHeading2').style.fontSize = newSize + 'px'; 
+
+            document.getElementById('zoomingHeading3').style.fontSize = newSize + 'px'; 
+            
+        });
+    </script> 
+
+    
+    
 </body>
 
 </html>

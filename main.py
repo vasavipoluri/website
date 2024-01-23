@@ -19,6 +19,7 @@ from starlette.responses import RedirectResponse
 import random 
 import secrets
 
+
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -42,14 +43,14 @@ def get_next_sequence_value(sequence_name):
     )
     return sequence_doc["sequence_value"]
 
-
 # Update MongoDB collection schema
 users_col.update_many({}, {"$set": {"course_registered": False}})
 
 # Your existing JWT configuration
 SECRET_KEY = secrets.token_hex(32)
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30 
+ACCESS_TOKEN_EXPIRE_MINUTES = 30  
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -57,11 +58,11 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 COOKIE_NAME = "access_token"
 
-def hash_password(passwords: str):
-    return pwd_context.hash(passwords)
+def hash_password(password: str):
+    return pwd_context.hash(password)
 
-def verify_password(passwords: str, hashed_password: str):
-    return pwd_context.verify(passwords, hashed_password)
+def verify_password(password: str, hashed_password: str):
+    return pwd_context.verify(password, hashed_password)
 
 def create_access_token(data: dict, expires_delta: timedelta = None):
     try:
@@ -83,11 +84,11 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
 # Modify the get_user function to print the username being searched
 def get_user(username: str):
     print(f"Searching for user: {username}")
-    Existing_username = users_col.find_one({'username': username})
-    if not Existing_username:
+    existing_user = users_col.find_one({'username': username})
+    if not existing_user:
         return False
     else:
-        return Existing_username
+        return existing_user
 
 #decode token
 def decode_token(token: str) -> dict:
@@ -148,7 +149,7 @@ def is_valid_password(password):
 
     if not any(char in string.punctuation for char in password):
         errors.append("Password doesn't contain a special character")
-
+        
     if not any(char.isdigit() for char in password):
         errors.append("Password doesn't contain a digit")
 
@@ -213,6 +214,7 @@ def signup_form_route(request: Request):
 def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
+
 # Email configuration
 EMAIL_HOST = "your-smtp-host"
 EMAIL_PORT = 587  # or the appropriate port for your SMTP server
@@ -223,15 +225,12 @@ def send_otp_email(email: str, otp: str):
     sender_email = "vasavi1997.poluri@gmail.com"  
     receiver_email = email
     password = "gsyi coaw ekpm udqv"  
-
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = receiver_email
     message["Subject"] = "Password Reset OTP"
-
     body = f"Your OTP for password reset: {otp}"
     message.attach(MIMEText(body, "plain"))
-
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
         server.starttls()
         server.login(sender_email, password)
@@ -241,23 +240,17 @@ def send_otp_email(email: str, otp: str):
 async def generate_otp(request:Request, username: str = Form(...)):
     # Check if user exists in the database
     existing_user = users_col.find_one({"username": username})
-
     if not existing_user:
         raise HTTPException(status_code=404, detail="User not found")
-
     # Using the "username" as the email value
     email = existing_user["username"]
     # Generate a 6-digit OTP (for demonstration purposes)
     otp = str(random.randint(100000, 999999))
-
     # Save the OTP in the user document in the database
     users_col.update_one({"username": username}, {"$set": {"otp": otp}})
-
     # Send the OTP to the user's email
     send_otp_email(email ,otp)
-
     return templates.TemplateResponse("enter-otp.html",{"request":request, "message": "OTP generated and sent successfully"})
-
 
 @app.post("/verify-and-update")
 def verify_and_update(
@@ -270,24 +263,18 @@ def verify_and_update(
         # Retrieve the OTP generated during the "generate-otp" step
         existing_user = users_col.find_one({"username": username})
         stored_otp = existing_user.get("otp", None)
-
         hashed_password = pwd_context.hash(newpassword)
-
         if stored_otp is not None and otp == stored_otp:
             # Update the password in the database
             users_col.update_one({"username": username}, {"$set": {"password": hashed_password}})
-
             # Optionally, you can remove the OTP field after updating the password
             users_col.update_one({"username": username}, {"$unset": {"otp": ""}})
-
             return templates.TemplateResponse("login.html", {"request": request, "message": "Password updated successfully"})
         else:
             raise HTTPException(status_code=400, detail="Invalid OTP")
-
     except Exception as e:
         print(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
-
 
 @app.post("/signup", response_class=HTMLResponse)
 async def signup(
@@ -526,7 +513,7 @@ def delete_student(request:Request,common_id: int,current_user: dict = Depends(g
 
     # Redirect to the student details page after deleting 
     return RedirectResponse(url="/studentdetails", status_code=302)           
-    3
+    
 
 @app.get("/contactus", response_class=HTMLResponse)
 def dashboard(request: Request, current_user: dict = Depends(get_current_user_from_cookie)):

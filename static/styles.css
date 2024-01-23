@@ -1,6 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiNtv5ws14JQlstOsA6nJle43hVMPiR8oGhg&usqp=CAU");
+    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiNtv5ws14JQlstOsA6nJle43hVMPiR8oGhg&usqp=CAU"); */
+    background-image: url("https://www.codingnepalweb.com/demos/website-login-registration-form-html-css/bg.jpg");
     margin: 0;
     display: flex;
     align-items: center;
@@ -10,22 +11,33 @@ body {
 
 } 
 .container {
-    height: 460px;
+    height: 420px;
     width: 370px;
     /* background: linear-gradient(blue,rgb(170, 131, 205));   */ 
-    background:linear-gradient(navy,black);
-    color: white; 
+    /* background:linear-gradient(navy,black); */ 
+    background-color: white;
+    color: black; 
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 0px;
     box-shadow: 0 0 10px rgba(11, 8, 8, 0.1);
     justify-content: center; 
 } 
 
-
+.signup-center{
+    margin: 10px;
+    align-items: center; 
+    margin-left: -3px; 
+    margin-top: 20px;
+}
 .link{
-    color: white;
+    color: blueviolet;
     margin: 5px;
-    padding: 10px;
+    padding: 5px; 
+    text-decoration: none;
+}
+
+.signup{
+    color: blueviolet;  
 }
 
 form {
@@ -54,21 +66,49 @@ input {
 
 }
 .color{
-    color: white;
+    color: black;
+} 
+
+.signup-container{
+    display: flex;
+    align-items: end;
+    text-align: right; 
+    flex-direction: column; 
+    color: blueviolet;
+    text-decoration: none;
 }
- .button{
+
+.login-signup{
+    margin:5px;
+    padding: 5px;
+    color: black;
+}
+ .login-button{
     height:40px;
-    width: 110px;
-    background-color: transparent;
+    width: 360px;
+    background-color: blueviolet;
     color: white;
-    border: 2px solid pink;
-    border-radius: 20px;
+    border: 0px;
+    font-size: 15px;
     padding: 10px;
     cursor: pointer;
     margin: 10px
 } 
-.h{
+
+.signup-button{
+    height:40px;
+    width: 360px;
+    background-color: blueviolet;
     color: white;
+    border: 0px;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 10px
+} 
+
+.h{
+    color: black;
     
 }
 
@@ -76,3 +116,8 @@ input {
     color: red;
 }  
 
+@media only screen and (min-width: 600px) {
+    .container {
+        max-width: 600px;
+    }
+}
